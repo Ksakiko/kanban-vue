@@ -21,11 +21,6 @@
       "listId": "2"
     },
     {
-      "id": "010f",
-      "todo": "sadas",
-      "listId": "1"
-    },
-    {
       "id": "c70e",
       "todo": "sadasda",
       "listId": "1"
@@ -36,14 +31,9 @@
       "listId": "1"
     },
     {
-      "id": "4579",
-      "todo": "TEst",
+      "id": "e599",
+      "todo": "asdasd",
       "listId": "1"
-    },
-    {
-      "id": "680b",
-      "todo": "test",
-      "listId": "2"
     }
   ],
   "lists": [
@@ -54,6 +44,10 @@
     {
       "id": "2",
       "title": "Doing"
+    },
+    {
+      "id": "ad32",
+      "title": "Test"
     }
   ]
 }

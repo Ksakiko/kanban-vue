@@ -3,7 +3,7 @@
     <header class="todo-list__header">
       <h3 class="todo-list__title">{{ list.title }}</h3>
       <div class="todo-list__action">
-        <button @click="handleAddTodo">+</button>
+        <button @click="handleDeleteList">X</button>
       </div>
     </header>
     <ul class="todo-list__list">
@@ -11,7 +11,7 @@
         v-for="todo in filteredTodos"
         :todo="todo"
         :key="todo.id"
-        @handleDelete="handleDelete"
+        @handleDeleteTodo="handleDeleteTodo"
       />
       <div class="todo-list__action" v-if="!formIsVisible">
         <button @click="handleAddTodo">+ Add new todo</button>
@@ -28,8 +28,10 @@ import TodoItem from "../TodoItem/TodoItem.vue";
 import { getAllTodos } from "../../services/todos";
 import { deleteTodo } from "../../services/todos";
 import { ref } from "vue";
+import { deleteList } from "../../services/todoLists";
 
 const props = defineProps(["list"]);
+const emit = defineEmits(["getTempUpdatedTodoLists"]);
 
 const filteredTodos = ref([]);
 const formIsVisible = ref(false);
@@ -39,13 +41,21 @@ const handleAddTodo = () => {
   formIsVisible.value = true;
 };
 
-const handleDelete = (e, id) => {
+const handleDeleteTodo = (e, id) => {
   // Update for Frontend's sake
   const newTodos = filteredTodos.value.filter((x) => x.id !== id);
   filteredTodos.value = newTodos;
 
   // Handle backend
   deleteTodo(id);
+};
+
+const handleDeleteList = async () => {
+  // Handle delete in backend
+  await deleteList(todoListId.value);
+
+  // Update the lists realtime in frontend
+  emit("getTempUpdatedTodoLists", todoListId.value);
 };
 
 const filterTodos = async () => {
