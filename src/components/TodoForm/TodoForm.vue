@@ -7,7 +7,7 @@
       name="todo"
       placeholder="Write a new todo here..."
       v-model="todoInput"
-      @mouseleave="handleSubmit"
+      @blur="handleSubmit"
     />
   </form>
 </template>
@@ -26,13 +26,14 @@ const listId = ref(props.listId);
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (todoInput === "") return;
-
-  emit("filterTodos");
+  if (todoInput.value === "") return;
+  console.log("SUBMIT");
 
   const res = await postNewTodo({
     todo: todoInput.value,
     listId: listId.value,
   });
+
+  emit("filterTodos");
 };
 </script>

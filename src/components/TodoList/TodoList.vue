@@ -35,8 +35,6 @@ const filteredTodos = ref([]);
 const formIsVisible = ref(false);
 const todoListId = ref(props.list.id);
 
-formIsVisible.value = false;
-
 const handleAddTodo = () => {
   formIsVisible.value = true;
 };

@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__inner">
-      <div>Kanban Angular</div>
+      <div>Kanban Vue</div>
     </div>
   </header>
 </template>
