@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-list">
+  <div class="todo-list" :id="list.id">
     <header class="todo-list__header">
       <h3 class="todo-list__title">{{ list.title }}</h3>
       <div class="todo-list__action">
@@ -34,7 +34,7 @@ const props = defineProps(["list"]);
 const emit = defineEmits(["getTempUpdatedTodoLists"]);
 
 const filteredTodos = ref([]);
-const formIsVisible = ref(false);
+const formIsVisible = ref();
 const todoListId = ref(props.list.id);
 
 const handleAddTodo = () => {

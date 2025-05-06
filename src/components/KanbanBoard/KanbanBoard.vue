@@ -10,6 +10,8 @@
           :list="list"
           :key="list.id"
           @getTempUpdatedTodoLists="getTempUpdatedTodoLists"
+          @dragover="handleDragover"
+          @drop="handleDrop"
         />
         <ListForm v-if="newListIsVisible" @getTodoLists="getTodoLists" />
       </div>
@@ -23,9 +25,12 @@ import { getAllTodoLists } from "../../services/todoLists";
 import TodoList from "../TodoList/TodoList.vue";
 import { ref } from "vue";
 import ListForm from "../ListForm/ListForm.vue";
+import { useTodosStore } from "../../store/todos";
+import { updateListIdToBelong } from "../../services/todos";
 
 const todoLists = ref([]);
 const newListIsVisible = ref(false);
+const store = useTodosStore();
 
 const getTodoLists = async () => {
   newListIsVisible.value = false;
@@ -40,6 +45,17 @@ const getTempUpdatedTodoLists = (id) => {
 
 const handleAddNewList = () => {
   newListIsVisible.value = true;
+};
+
+const handleDragover = (e) => {
+  e.preventDefault();
+};
+const handleDrop = async (e) => {
+  const todoId = store.currentDraggedTodoId;
+  const listId = e.target.closest(".todo-list").id;
+
+  // Update database
+  await updateListIdToBelong(todoId, listId);
 };
 
 getTodoLists();
