@@ -25,7 +25,7 @@
 import "./TodoList.css";
 import TodoForm from "../TodoForm/TodoForm.vue";
 import TodoItem from "../TodoItem/TodoItem.vue";
-import { getAllTodos } from "../../services/todos";
+import { deleteMultipleTodos, getAllTodos } from "../../services/todos";
 import { deleteTodo } from "../../services/todos";
 import { ref } from "vue";
 import { deleteList } from "../../services/todoLists";
@@ -51,8 +51,16 @@ const handleDeleteTodo = (e, id) => {
 };
 
 const handleDeleteList = async () => {
+  const todosToBeDeleted = filteredTodos.value.filter(
+    (x) => x.listId === todoListId.value
+  );
+
+  const todoIds = todosToBeDeleted.map((x) => x.id);
+
+  deleteMultipleTodos(todoIds);
+
   // Handle delete in backend
-  await deleteList(todoListId.value);
+  deleteList(todoListId.value);
 
   // Update the lists realtime in frontend
   emit("getTempUpdatedTodoLists", todoListId.value);

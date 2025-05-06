@@ -27,7 +27,6 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (todoInput.value === "") return;
-  console.log("SUBMIT");
 
   const res = await postNewTodo({
     todo: todoInput.value,
