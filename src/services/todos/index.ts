@@ -49,6 +49,7 @@ export const deleteTodo = async (todoId: string) => {
   }
 };
 
+// Use this in order to delete todos by listId
 export const deleteMultipleTodos = async (todoIds: string[]) => {
   try {
     Promise.all(
