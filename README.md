@@ -1,17 +1,33 @@
 # Kanban Vue
 
-This is a kanban board application that is built on Vue with Vite.
+This is a Kanban Board application which is built on Vue with Vite. In the current version, you can create new lists and todos and delete them.
 
-# Get started
+# Database
 
-```
-npm run dev
-```
+In this project, json server is currently used to simulate a backend system.
 
-The command above runs both frontend and json-server. If you would like to run only frontend use `npm run vite`, or `npm run server` for json-server.
+# Developing
 
-# Vue 3 + TypeScript + Vite
+1. Clone the repo
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+   Navigate to a directory where you want to clone the repo in the terminal
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+   Run `git clone https://github.com/Ksakiko/kanban-vue`
+
+2. Install npm packages
+
+   Run `npm i` in the directory where the project is located in the terminal
+
+3. Start a local server and backend
+
+   Run `npm run dev`
+
+   This command line runs both frontend and json-server. If you need to run only frontend use `npm run vite`, or `npm run server` for json-server.
+
+4. Open a web browser to view the application
+
+   Copy and paste the link (`http://localhost:5173/`) in a web browser
+
+   or `Ctrl+click` on the link in the terminal (Windows)
+
+   or `Cmd+click` on the link in the terminal (macOS)
